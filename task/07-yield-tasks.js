@@ -1,4 +1,3 @@
-
 /** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
@@ -31,10 +30,31 @@
  * @return {Iterable.<string>}
  *
  */
-function* get99BottlesOfBeer() {
-  throw new Error('Not implemented');
-}
+ function* get99BottlesOfBeer() {
+  let word = "bottles";
+  let count = 99;
+  while (count > 0) {
+      if (count == 1){
 
+          word = "bottle"
+      }
+
+      yield count + " " + word + " of beer on the wall";
+      yield count + " " + word + " of beer,";
+      yield "Take one down, pass it around,";
+
+      count = count - 1;
+  
+      if (count > 0) {
+        if (count == 1){
+          yield count + " " + word.slice(0, -1) + " of beer on the wall.";
+        }
+      } else {
+          yield "No more " + word + " of beer on the wall.";
+          yield 'Go to the store and buy some more, 99 bottles of beer on the wall.'
+      }
+  }
+}
 
 /**
  * Returns the Fibonacci sequence:
@@ -46,8 +66,19 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-  throw new Error('Not implemented');
+  const n = 4
+  let current = 0
+  let next = 1
+
+  if (n === 0) {
+    return current;
+  }
+  yield current;
+  yield *getFibonacciSequence(n-1, next, current + next);
 }
+
+let fibonacci = [...getFibonacciSequence()]
+console.log(fibonacci)
 
 
 /**

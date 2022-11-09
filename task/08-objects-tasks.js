@@ -1,4 +1,5 @@
 
+
 /** ************************************************************************************************
  *                                                                                                *
  * Plese read the following tutorial before implementing tasks:                                   *
@@ -21,9 +22,18 @@
  *    console.log(r.height);      // => 20
  *    console.log(r.getArea());   // => 200
  */
-function Rectangle(width, height) {
-  throw new Error('Not implemented');
+ function Rectangle(width, height) {
+  return {
+    width,
+    height,
+    getArea: () => width * height
+  }
 }
+
+var r = new Rectangle(10,20)
+console.log(r.width)
+console.log(r.height)
+console.log(r.getArea())
 
 
 /**
@@ -37,9 +47,8 @@ function Rectangle(width, height) {
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
 function getJSON(obj) {
-  throw new Error('Not implemented');
+  return JSON.stringify(obj)
 }
-
 
 /**
  * Returns the object of specified type from JSON representation
@@ -53,9 +62,11 @@ function getJSON(obj) {
  *
  */
 function fromJSON(proto, json) {
-  throw new Error('Not implemented');
+  return JSON.parse(json)
 }
 
+var r = fromJSON(Rectangle.prototype, '{"width":10, "height":20}');
+console.log(r)
 
 /**
  * Css selectors builder
@@ -115,15 +126,17 @@ function fromJSON(proto, json) {
 const cssSelectorBuilder = {
 
   element(value) {
-    throw new Error('Not implemented');
+    return value
   },
 
   id(value) {
-    throw new Error('Not implemented');
+    const element = this.element()
+    element.setAttribute('id', value)
   },
 
   class(value) {
-    throw new Error('Not implemented');
+    const element = this.element()
+    element.setAttribute('class', value)
   },
 
   attr(value) {

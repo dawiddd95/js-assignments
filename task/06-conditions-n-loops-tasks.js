@@ -1,4 +1,3 @@
-
 /** ************************************************************************************************
  *                                                                                                *
  * Plese read the following tutorial before implementing tasks:                                   *
@@ -28,8 +27,20 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(num) {
-  throw new Error('Not implemented');
+ function getFizzBuzz(num) {
+  if(num % 5 === 0 && num % 3 === 0) {
+    return 'FizzBuzz'
+  }
+  
+  if(num % 5 === 0) {
+    return 'Buzz'
+  }
+  
+  if(num % 3 === 0) {
+    return 'Fizz'
+  } 
+
+  return num
 }
 
 
@@ -45,9 +56,14 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-  throw new Error('Not implemented');
+  if (n < 0) 
+    return -1;
+  else if (n == 0) 
+    return 1;
+  else {
+    return (n * getFactorial(n - 1));
+  }
 }
-
 
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
@@ -62,7 +78,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-  throw new Error('Not implemented');
+  let arr = []
+
+  for (let i = n1; i <= n2; i++) {
+    arr = [...arr, i]
+  }
+
+  return arr.reduce( (prev, value) => prev + value)
 }
 
 
@@ -82,9 +104,8 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-  throw new Error('Not implemented');
+  return a  +b > c && b + c > a && c + a > b
 }
-
 
 /**
  * Returns true, if two specified axis-aligned rectangles overlap, otherwise false.
@@ -150,7 +171,13 @@ function doRectanglesOverlap(rect1, rect2) {
  *
  */
 function isInsideCircle(circle, point) {
-  throw new Error('Not implemented');
+  if (
+      (point.x - circle.center.x) * (point.x - circle.center.x) + (point.y - circle.center.y) * (point.y - circle.center.y) 
+        <= circle.radius * circle.radius
+    )
+    return true;
+  else
+    return false;
 }
 
 
@@ -166,9 +193,14 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-  throw new Error('Not implemented');
+  for (let i = 0; i < str.length; i++) {
+    let char = str.charAt(i);
+    if (str.indexOf(char) == i && str.indexOf(char, i + 1) == -1) {
+      return char;
+    }
+  }
+  return null;
 }
-
 
 /**
  * Returns the string representation of math interval, specified by two points and 
@@ -210,7 +242,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-  throw new Error('Not implemented');
+  return str.split('').reverse().join('');
 }
 
 
@@ -227,9 +259,10 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-  throw new Error('Not implemented');
+  const toString = num.toString()
+  const reverseNum = parseInt(toString.split('').reverse().join(''))
+  return reverseNum
 }
-
 
 /**
  * Validates the CCN (credit card number) and return true if CCN is valid

@@ -1,5 +1,4 @@
-
-/** ******************************************************************************************
+ /** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates          *
@@ -20,10 +19,9 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(width, height) {
-  throw new Error('Not implemented');
+ function getRectangleArea(width, height) {
+  return width * height
 }
-
 
 /**
  * Returns a circumference of circle given by radius.
@@ -37,7 +35,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
-  throw new Error('Not implemented');
+  return 2 * Math.PI * radius
 }
 
 /**
@@ -53,8 +51,9 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  throw new Error('Not implemented');
+  return (value1 + value2)/2
 }
+
 
 /**
  * Returns a distance beetween two points by cartesian coordinates.
@@ -73,7 +72,7 @@ function getAverage(value1, value2) {
  *   (4, 2) (1, 6) => 5
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  throw new Error('Not implemented');
+  return Math.hypot(x2-x1, y2-y1)
 }
 
 /**
@@ -128,9 +127,8 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  throw new Error('Not implemented');
+  return String(value).slice(-1)
 }
-
 
 /**
  * Returns a number by given string representation.
@@ -144,7 +142,7 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-  throw new Error('Not implemented');
+  return parseInt(value, 10)
 }
 
 /**
@@ -203,7 +201,13 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  throw new Error('Not implemented');
+  for (var i = 2; i < n; i++) {
+    if(n % i === 0) {
+      return false;
+    } 
+  }
+
+  return n > 1;
 }
 
 /**

@@ -1,4 +1,3 @@
-
 /** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
@@ -29,10 +28,30 @@
  *
  * @return {RegExp}
  */
-function getRegexForGuid() {
-  throw new Error('Not implemented');
+ function getRegexForGuid() {
+  const regex = /(\{[a-fA-F0-9]{8})-(([a-fA-F0-9]{4})-){3}([a-fA-F0-9]{12}\})/
+
+  let text = '{3F2504E0-4F89-41D3-9A0C-0305E82C3301}'
+  console.log(regex.test(text))
+  text = '{21EC2020-3AEA-4069-A2DD-08002B30309D}'
+  console.log(regex.test(text))
+  text = '{0c74f13f-fa83-4c48-9b33-68921dd72463}'
+  console.log(regex.test(text))
+  text = '{D44EF4F4-280B47E5-91C7-261222A59621}'
+  console.log(regex.test(text))
+  text = '{D1A5279D-B27D-4CD4-A05E-EFDH53D08E8D}'
+  console.log(regex.test(text))
+  text = '{5EDEB36C-9006-467A8D04-AFB6F62CD7D2}'
+  console.log(regex.test(text))
+  text = '677E2553DD4D43B09DA77414DB1EB8EA'
+  console.log(regex.test(text))
+  text = '0c74f13f-fa83-4c48-9b33-68921dd72463'
+  console.log(regex.test(text))
+  text = 'The roof, the roof, the roof is on fire'
+  console.log(regex.test(text))
 }
 
+getRegexForGuid()
 
 /**
  * Returns the regexp that matches all the strings from first column
@@ -52,9 +71,31 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  throw new Error('Not implemented');
+  const regex = /.*p.t\w*/
+
+  let text = 'pit'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'spot'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'spate'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'slap two'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'respite'
+  console.log(`${text}: ${regex.test(text)}`)
+
+  text = ' pt'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'Pot'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'peat'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'part'
+  console.log(`${text}: ${regex.test(text)}`)
+
 }
 
+getRegexForPitSpot()
 
 /**
  * Returns the regexp that matches all IPv4 strings in
@@ -71,9 +112,29 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
-  throw new Error('Not implemented');
+  const regex = /((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01])/
+  let text = '0.0.0.0'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = '127.0.0.1'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = '10.10.1.1'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = '46.61.155.237' 
+  console.log(`${text}: ${regex.test(text)}`)
+  text = '010.234.015.001'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = '300.0.0.0'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = '127.0.0.-1'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = '23.24.25.26.27'
+  console.log(`${text}: ${regex.test(text)}`)
+  text = 'Set dns to 8.8.8.8'
+  console.log(`${text}: ${regex.test(text)}`)
 }
 
+
+getRegexForIPv4()
 
 /**
  * Returns the regexp that matches all SSN (Social Security Number) codes in
@@ -90,8 +151,20 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-  throw new Error('Not implemented');
+  const regex = /([0-9]){2}[1-9]-[0-9][1-9]-([0-9]){3}[1-9]/
+  console.log(regex.test('123-45-6789'));
+  console.log(regex.test('234-56-2349'));
+  console.log(regex.test('875-43-0298'));
+  console.log(regex.test('034-01-0008'));
+
+  console.log(regex.test('123456789'));
+  console.log(regex.test('000-56-2349'));
+  console.log(regex.test('875-00-0298'));
+  console.log(regex.test('034-01-0000'));
+  console.log(regex.test('0S4-H1-HACK'));
 }
+
+getRegexForSSN()
 
 
 /**
