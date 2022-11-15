@@ -214,7 +214,9 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  throw new Error('Not implemented');
+  return arr.map(function (century) {
+    return century.join(",");
+  }).join("\n");
 }
 
 /**
@@ -461,7 +463,7 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  throw new Error('Not implemented');
+  return [...Array(n)].map((e, i, a) => a.map(e => +!i--));
 }
 
 /**
@@ -591,7 +593,12 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 function swapHeadAndTail(arr) {
-  throw new Error('Not implemented');
+  const middle = arr.length / 2;
+  return [
+    ...arr.slice(-middle),
+    ...arr.slice(middle, -middle), 
+    ...arr.slice(0, middle)
+  ]
 }
 
 module.exports = {

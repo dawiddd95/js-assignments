@@ -197,7 +197,10 @@ function extractEmails(str) {
 *
 */
 function getRectangleString(width, height) {
- throw new Error('Not implemented');
+  let up = '┌' + '─'.repeat(width - 2) + '┐\n';
+  let middle = '│' + ' '.repeat(width - 2) + '│\n';
+  let down = '└' + '─'.repeat(width - 2) + '┘\n';
+  return up + middle.repeat(height - 2) + down;
 }
 
 
@@ -218,7 +221,9 @@ function getRectangleString(width, height) {
 *
 */
 function encodeToRot13(str) {
- throw new Error('Not implemented');
+  const originalAlpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  const cipher = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+  return str.replace(/[a-z]/gi, letter => cipher[originalAlpha.indexOf(letter)])
 }
 
 /**
@@ -286,3 +291,20 @@ module.exports = {
  isString: isString,
  getCardId: getCardId
 };
+
+function duplicateEncode(word){
+  let letterCount = {};
+  let letters = word.toLowerCase().split('');
+
+  letters.forEach(function(letter) {
+    letterCount[letter] = (letterCount[letter] || 0) + 1;
+    console.log('letterCount: ', letterCount)
+  });
+
+  // 1
+  return letters.map(function(letter) {
+    // 2
+    return letterCount[letter] === 1 ? '(' : ')';
+    // 3
+  }).join('');
+}

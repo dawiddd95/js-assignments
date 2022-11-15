@@ -111,7 +111,7 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  throw new Error('Not implemented');
+  return Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
 }
 
 /**
@@ -180,7 +180,7 @@ function getParallelipidedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  throw new Error('Not implemented');
+  return Math.round(num / Math.pow(10, pow)) * Math.pow(10, pow)
 }
 
 /**
