@@ -225,7 +225,10 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-  throw new Error('Not implemented');
+  const openChar = isStartIncluded ? '[' : '(';
+  const closeChar = isEndIncluded ? ']' : ')';
+
+  return `${openChar}${a < b ? a : b},${b > a ? b : a}${closeChar}`
 }
 
 
@@ -304,7 +307,13 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-  throw new Error('Not implemented');
+  const arr = String(num).split('')
+  const arrOfNums = arr.map(element => parseInt(element, 10))
+  const arrSum = arrOfNums.reduce( (acc, value) => acc + value)
+  const arrOfSum = String(arrSum).split('').map(element => parseInt(element, 10))
+  const result = arrOfSum.reduce( (acc, value) => acc + value)
+
+  return result
 }
 
 
@@ -330,7 +339,33 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-  throw new Error('Not implemented');
+  let counts = {}
+  const arr = str.split('')
+  
+  for(let element of arr) {
+    if(!counts.hasOwnProperty(element) )  counts[element] = 0
+    counts[element] += 1
+  }
+
+  if(str === '') {
+    return true
+  }
+
+  const isCurlyBracketsValid = counts['{'] === counts['}']
+  const isSquareBracketsValid = counts['['] === counts[']']
+  const isCircledBracketsValid = counts['('] === counts[')']
+  const isArrowBracketsValid = counts['<'] === counts['>']
+
+  if(
+    isArrowBracketsValid && 
+    isSquareBracketsValid && 
+    isCircledBracketsValid && 
+    isCurlyBracketsValid
+  ) {
+    return true
+  }
+
+  return false
 }
 
 
@@ -391,7 +426,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-  throw new Error('Not implemented');
+  return num.toString(n)
 }
 
 
@@ -431,7 +466,18 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-  throw new Error('Not implemented');
+  let result = [];
+  for (let i = 0; i < m1.length; i++) {
+    result[i] = [];
+    for (let j = 0; j < m2[0].length; j++) {
+        let sum = 0;
+        for (let k = 0; k < m1[0].length; k++) {
+            sum += m1[i][k] * m2[k][j];
+        }
+        result[i][j] = sum;
+    }
+  }
+  return result;
 }
 
 
